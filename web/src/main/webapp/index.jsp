@@ -24,14 +24,14 @@
 				 <form action="Controller"	method="post">
 					<input type="hidden" name="command" value="change-local" /> 
 					<input type="hidden" name="local" value="ru" /> 
-					<input type="image" src="rus1.jpg">
+					<input type="image" src="resources/icon/rus1.jpg">
 				</form>
 	</td>
 	<td align="left" width="3" height="0">
 				<form action="Controller" method="post">
 					<input type="hidden" name="command" value="change-local" /> 
 					<input type="hidden" name="local" value="en" /> 
-					<input type="image" src="en.jpg">
+					<input type="image" src="resources/icon/en.jpg">
 				</form>
 	</td>
 	</tr>
