@@ -30,7 +30,7 @@
     <tr bgcolor="#BDBDBD">
         <td align="right" width="900" height="15">
             ${nameUser}
-            <c:out value="${requestScope.login}"/>
+            <c:out value="${user.login} ${user.password}"/>
         </td>
         <td width="100" height="15">
             <form action="Controller" method="post">

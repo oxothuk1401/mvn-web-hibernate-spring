@@ -2,15 +2,12 @@ package by.htp.library.entity;
 
 
 
-import org.hibernate.annotations.*;
-
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Table(name = "users")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -19,8 +16,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id = 0;
     @Column(name = "login")
+    @Size(min = 6, message = "Имя пользователя должно быть нболее 6 симоволов")
     private String login = null;
     @Column(name = "password")
+    @Size(min = 5, max = 10, message = "Пароль должен быть от 5 до 10 знаков")
     private String password = null;
     @Column(name = "role")
     private String role = null;
