@@ -24,14 +24,14 @@
 				 <form action="Controller"	method="post">
 					<input type="hidden" name="command" value="change-local" /> 
 					<input type="hidden" name="local" value="ru" /> 
-					<input type="image" src="resources/icon/rus1.jpg">
+					<input type="image" src="../../../resources/icon/rus1.jpg">
 				</form>
 	</td>
 	<td align="left" width="3" height="0">
 				<form action="Controller" method="post">
 					<input type="hidden" name="command" value="change-local" /> 
 					<input type="hidden" name="local" value="en" /> 
-					<input type="image" src="resources/icon/en.jpg">
+					<input type="image" src="../../../resources/icon/en.jpg">
 				</form>
 	</td>
 	</tr>
@@ -43,7 +43,7 @@
 					<input type="hidden" name="command" value="login" />
 					<input type="text" name="login" size="15" value="" placeholder=${login}> <br />
 					<input type="password" name="password" size="15" value="" placeholder=${password}><br />
-                    <script src = "assets/loginPassword.js"></script>
+                    <script src = "../../../assets/loginPassword.js"></script>
 					<input type="submit" value="${login_button}" />
 				</form>
 				<form  action="Controller"  method="post">

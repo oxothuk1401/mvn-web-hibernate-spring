@@ -20,31 +20,20 @@
 
     <fieldset class="boxBody">
 
-        <span style="float: right">
-				<a href="?lang=en"><img src="/resources/icon/en.jpg" alt="english"></a>
-				<a href="?lang=ru"><img src="/resources/icon/rus1.jpg" alt="russan"></a>
-        </span>
-        <form:label path="login"><local:message code="login"/></form:label>
+        <form:label path="login"><local:message code="enterlogin"/></form:label>
         <form:input path="login"/>
         <form:errors path="login" cssClass="error"/>
 
-        <form:label path="password"><local:message code="password"/></form:label>
+        <form:label path="password"><local:message code="enterpassword"/></form:label>
         <form:password path="password"/>
         <form:errors path="password" cssClass="error"/>
 
     </fieldset>
     <footer>
-        <input type="submit" class="btnLogin" value="<local:message code="locbutton.name.login"/>" tabindex="4">
-
-    </footer>
-
-</form:form>
-<form:form method="POST" modelAttribute="user" action="check-register">
-    <footer>
         <input type="submit" class="btnLogin" value="<local:message code="registration"/>" tabindex="4">
+
     </footer>
+
 </form:form>
-
-
 </body>
 </html>

@@ -3,9 +3,9 @@ package by.htp.library.controller;
 public final class PageName {
 	private PageName() {
 	}
-	public static final String INDEX_PAGE = "login";
+	public static final String INDEX_PAGE = "index";
 	public static final String ERROR_PAGE = "error";
-	public static final String USER_PAGE = "main";
+	public static final String USER_PAGE = "user_page";
 	public static final String SHOW_USERS = "show_users";
 	public static final String REGISTER_PAGE = "register_page";
 	public static final String ADMIN_PAGE = "admin_page";

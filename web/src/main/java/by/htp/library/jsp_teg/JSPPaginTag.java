@@ -1,8 +1,6 @@
 package by.htp.library.jsp_teg;
 
-import by.htp.library.command.impl.Login;
 import by.htp.library.jsp_bean.JSPUserBean;
-import org.apache.log4j.Logger;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
@@ -13,7 +11,6 @@ import java.io.IOException;
  * Created by oxothuk1401 on 21.10.2016.
  */
 public class JSPPaginTag extends TagSupport {
-    private static Logger log = Logger.getLogger(Login.class.getName());
     private JSPUserBean jspUserBean;
 
     public JSPUserBean getJspUserBean() {
@@ -26,7 +23,6 @@ public class JSPPaginTag extends TagSupport {
 
     public int doStartTag() throws JspException {
         int position = jspUserBean.getPosition();
-        log.info("JSPPaginTag jspUserBean.getPosition = " + position);
         int amount = jspUserBean.getAmount();
         int amountPages = jspUserBean.getCountAllUsers() / amount;
         try {
