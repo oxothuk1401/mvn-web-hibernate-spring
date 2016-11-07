@@ -23,6 +23,4 @@ public interface UserOperationDAO<T> {
     List<User> takeUser(String position, String amount) throws DAOException;
 
     int countAllUsers() throws DAOException;
-
-
 }

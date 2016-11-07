@@ -1,7 +1,7 @@
 package by.htp.library.controller;
 
 import by.htp.library.entity.User;
-import org.apache.log4j.Logger;
+import org.jboss.logging.Logger;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
