@@ -1,7 +1,7 @@
 //package by.htp.library.command.impl;
 //
 //import by.htp.library.command.Command;
-//import by.htp.library.controller.PageName;
+//import by.htp.library.service.PageName;
 //import by.htp.library.dao.exception.DAOException;
 //import by.htp.library.entity.User;
 //import by.htp.library.jsp_bean.JSPUserBean;

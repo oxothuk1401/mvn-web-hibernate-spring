@@ -1,7 +1,7 @@
 //package by.htp.library.command.impl;
 //
 //import by.htp.library.command.Command;
-//import by.htp.library.controller.PageName;
+//import by.htp.library.service.PageName;
 //
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;

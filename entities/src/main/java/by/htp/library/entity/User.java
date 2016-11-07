@@ -1,30 +1,41 @@
 package by.htp.library.entity;
 
 
-
-import org.hibernate.annotations.*;
-
 import javax.persistence.*;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "idusers")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id = 0;
     @Column(name = "login")
+    @Size(min = 4, message = "{name.size.error}")
     private String login = null;
     @Column(name = "password")
+    @Size(min = 4, max = 10, message = "{password.size.error}")
     private String password = null;
     @Column(name = "role")
     private String role = null;
     @Column(name = "blacklist")
     private String blacklist = null;
+
+
+    public User() {
+    }
+
+    public User(String login, String password, String role, String blacklist) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+        this.blacklist = blacklist;
+    }
+
 
 
     public String getBlacklist() {
@@ -43,13 +54,11 @@ public class User implements Serializable {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String getPassword() { return password; }
 
     public String getRole() {
         return role;
@@ -74,4 +83,5 @@ public class User implements Serializable {
                 "Role = " + role + "\n" +
                 "Blacklist = " + blacklist;
     }
+
 }

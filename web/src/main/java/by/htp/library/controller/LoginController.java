@@ -1,13 +1,17 @@
 package by.htp.library.controller;
 
 import by.htp.library.entity.User;
-import org.jboss.logging.Logger;
+import by.htp.library.service.LoginService;
+import by.htp.library.service.PageName;
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.RequestContextUtils;
 
@@ -22,7 +26,10 @@ import java.util.Map;
 @SessionAttributes("user")
 public class LoginController {
     private static Logger log = Logger.getLogger(LoginController.class);
+    @Autowired
+    LoginService loginService;
 
+    String page = PageName.INDEX_PAGE;
     @ModelAttribute
     public User createNewUser() {
         return new User();
@@ -31,7 +38,7 @@ public class LoginController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(@ModelAttribute User user, HttpSession session, Locale locale) {
-        return PageName.INDEX_PAGE;
+        return page;
     }
 
 
@@ -39,10 +46,13 @@ public class LoginController {
     public String checkUser(Locale locale, @Valid @ModelAttribute("user") User user, BindingResult bindingResult, ModelMap modelMap, RedirectAttributes redirectAttributes) {
         if (!bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("locale", locale);
+                page = loginService.checkLogin(user.getLogin(), user.getPassword());
+            System.out.println(5);
             return "redirect:/user_page";
+//            }
         }
-        return PageName.INDEX_PAGE;
-//        return new ModelAndView("user_page", "user", user);
+        System.out.println(6);
+        return page;
     }
 
     @RequestMapping(value = "/user_page", method = RequestMethod.GET)
@@ -54,12 +64,9 @@ public class LoginController {
         } else {
             log.info("update!");
         }
-
-        return PageName.USER_PAGE;
+        System.out.println(7);
+        return page;
     }
 
-//    @RequestMapping(value = "/check-register", method = RequestMethod.POST)
-//    public String checkRegister(Locale locale, @ModelAttribute User user, HttpSession session) {
-//        return PageName.REGISTER_PAGE;
-//    }
+
 }

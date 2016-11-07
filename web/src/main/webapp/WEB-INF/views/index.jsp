@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="local" %>
@@ -13,7 +12,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <script src = "/resources/javascript/strengthPassword.js"></script>
+    <script src="/resources/javascript/strengthPassword.js"></script>
 </head>
 
 
@@ -30,7 +29,7 @@
 				<a href="?lang=ru"><img src="/resources/icon/rus1.jpg" alt="rus"></a>
         </span>
         <form:label path="login"><local:message code="login"/></form:label>
-        <form:input path="login" />
+        <form:input path="login"/>
         <form:errors path="login" cssClass="error"/>
 
         <form:label path="password"><local:message code="password"/></form:label>
@@ -51,18 +50,18 @@
 <br>
 <br>
 <div align="center">
-<p>
-    <font size="20" color="#008b8b">
-        <local:message code="library"/>
-    </font>
-</p>
-<br>
-<form:form method="POST" modelAttribute="user" action="check-register">
-    <input type="submit" class="btnReg"  value="<local:message code="registration"/>">
-</form:form>
+    <p>
+        <font size="20" color="#008b8b">
+            <local:message code="library"/>
+        </font>
+    </p>
+    <br>
+    <form:form method="POST" modelAttribute="user" action="check-register">
+        <input type="submit" class="btnReg" value="<local:message code="registration"/>">
+    </form:form>
 
 </div>
-<body >
+<body>
 
 </body>
 </html>

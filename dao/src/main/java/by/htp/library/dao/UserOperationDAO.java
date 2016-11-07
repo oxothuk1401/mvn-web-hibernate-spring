@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UserOperationDAO<T> {
 
-    User checkLogin(String login, String password) throws DAOException;
+    User checkLogin(String login, String password);
 
     User checkRegister(String login, String password) throws DAOException;
 
