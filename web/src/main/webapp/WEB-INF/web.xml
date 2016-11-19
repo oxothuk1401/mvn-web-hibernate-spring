@@ -4,14 +4,15 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
     <display-name>Library</display-name>
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
+    <!--<welcome-file-list>-->
+        <!--<welcome-file>index.jsp</welcome-file>-->
+    <!--</welcome-file-list>-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
             WEB-INF/dispatcher-servlet.xml
             WEB-INF/applicationContext.xml
+            WEB-INF/security.xml
         </param-value>
     </context-param>
     <servlet>
@@ -42,63 +43,14 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-    <!--<filter>-->
-    <!--<filter-name>hibernateFilter</filter-name>-->
-    <!--<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>-->
-    <!--<init-param>-->
-    <!--<param-name>sessionFactoryBeanName</param-name>-->
-    <!--<param-value>sessionFactory</param-value>-->
-    <!--</init-param>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>hibernateFilter</filter-name>-->
-    <!--<url-pattern>/</url-pattern>-->
-    <!--</filter-mapping>-->
-    <!--<filter>-->
-    <!--<filter-name>springSecurityFilterChain</filter-name>-->
-    <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>springSecurityFilterChain</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
-
-    <!--<session-config>-->
-    <!--<session-timeout>10</session-timeout>-->
-    <!--</session-config>-->
-    <!--<servlet>-->
-    <!--<description></description>-->
-    <!--<display-name>Controller</display-name>-->
-    <!--<servlet-name>Controller</servlet-name>-->
-    <!--<servlet-class>by.htp.library.controller.Controller</servlet-class>-->
-    <!--</servlet>-->
-    <!--<servlet-mapping>-->
-    <!--<servlet-name>Controller</servlet-name>-->
-    <!--<url-pattern>/Controller</url-pattern>-->
-    <!--</servlet-mapping>-->
-    <!--<listener>-->
-    <!--<listener-class>by.htp.library.listners.DAOlistners</listener-class>-->
-    <!--</listener>-->
     <filter>
-        <display-name>CharsetFilters</display-name>
-        <filter-name>CharsetFilters</filter-name>
-        <filter-class>by.htp.library.Filters.CharsetFilters</filter-class>
-        <init-param>
-            <param-name>characterEncoding</param-name>
-            <param-value>utf-8</param-value>
-        </init-param>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>CharsetFilters</filter-name>
+        <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
+        <!--1 * - все запросы-->
+        <!--2 ** - все запросы и подзаро-->
     </filter-mapping>
-
-    <!--<jsp-config>-->
-        <!--<taglib>-->
-            <!--<taglib-uri>/WEB-INF/tld/taglib.tld</taglib-uri>-->
-            <!--<taglib-location>/WEB-INF/tld/taglib.tld</taglib-location>-->
-        <!--</taglib>-->
-    <!--</jsp-config>-->
 </web-app>

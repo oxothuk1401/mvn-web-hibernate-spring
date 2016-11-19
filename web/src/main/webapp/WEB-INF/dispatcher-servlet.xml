@@ -5,12 +5,17 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+		http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
     <!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-    <context:component-scan base-package="by.htp.library"/>
+    <context:component-scan base-package="by.htp.library.*"/>
     <!-- Enables the Spring MVC @Controller programming model -->
+    <aop:aspectj-autoproxy/>
+    <!--для поиска анатаций-->
     <mvc:annotation-driven/>
     <!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
     <mvc:resources mapping="/resources/**" location="resources/"/>
@@ -30,10 +35,6 @@
             <mvc:mapping path="/*"/>
             <ref bean="localeChangeInterceptor"/>
         </mvc:interceptor>
-        <!--<mvc:interceptor>-->
-            <!--<mvc:mapping path="/check-user"/>-->
-            <!--<ref bean="checkUserInerceptor"/>-->
-        <!--</mvc:interceptor>-->
     </mvc:interceptors>
 
     <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
@@ -65,5 +66,16 @@
     <tx:annotation-driven/>
     <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager"
           p:sessionFactory-ref="sessionFactory"/>
+    <!--AOP Transactional-->
+    <tx:advice id="Trans" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="*" propagation="REQUIRED" isolation="READ_COMMITTED" read-only="false"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:advisor pointcut="execution(* by.htp.library.service.*.*(..))" advice-ref="Trans"/>
+    </aop:config>
+
 
 </beans>

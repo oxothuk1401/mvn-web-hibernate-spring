@@ -2,7 +2,6 @@ package by.htp.library.dao;
 
 import by.htp.library.dao.exception.DAOException;
 import by.htp.library.entity.User;
-import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

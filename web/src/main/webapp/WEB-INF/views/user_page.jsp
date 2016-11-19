@@ -18,6 +18,7 @@
 <form:form method="GET" modelAttribute="user" action="/to-main">
     <input type="submit" class="btnReg" value="<local:message code="exit"/>">
 </form:form>
+<a href="j_spring_security_logout">Logout</a>
 
 </body>
 </html>

@@ -4,14 +4,8 @@ import by.htp.library.dao.UserOperationDAO;
 import by.htp.library.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.transaction.Transactional;
 
 @Service
-@Transactional
-
 public class LoginService {
     @Autowired
     private UserOperationDAO userOperationDAO;

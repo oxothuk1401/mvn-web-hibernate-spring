@@ -17,6 +17,7 @@ public class ToMain {
 
     @RequestMapping(value = "/to-main", method = RequestMethod.GET)
     public String checkRegister(Locale locale, @ModelAttribute User user, HttpSession session) {
+
         return PageName.INDEX_PAGE;
     }
 }
