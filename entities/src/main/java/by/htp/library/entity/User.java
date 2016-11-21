@@ -19,16 +19,15 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id = 0;
     @Column(name = "login")
-    @Size(min = 4, message = "{name.size.error}")
     private String login = null;
     @Column(name = "password")
-    @Size(min = 4, max = 10, message = "{password.size.error}")
     private String password = null;
     @Column(name = "role")
     private String role = null;
     @Column(name = "blacklist")
     private String blacklist = null;
     private int summa = 30;
+    private String command;
 
 
     public User() {
@@ -41,7 +40,13 @@ public class User implements Serializable {
         this.blacklist = blacklist;
     }
 
+    public String getCommand() {
+        return command;
+    }
 
+    public void setCommand(String command) {
+        this.command = command;
+    }
 
     public String getBlacklist() {
         return blacklist;

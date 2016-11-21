@@ -9,7 +9,5 @@ public final class PageName {
 	public static final String SHOW_USERS = "show_users";
 	public static final String SHOW_CATALOG = "show_catalog";
 	public static final String REGISTER_PAGE = "register_page";
-	public static final String ADMIN_PAGE = "admin_page";
-
 }
 

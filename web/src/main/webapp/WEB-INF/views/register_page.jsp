@@ -15,20 +15,22 @@
 
 <body>
 
-<form:form method="POST" modelAttribute="user" action="registration"
+<form:form method="GET" modelAttribute="user" action="registration"
            class="box login">
 
 
     <fieldset class="boxBody">
         <form:label path="login"><local:message code="login"/></form:label>
         <form:input path="login"/>
-        <form:errors path="login" cssClass="error"/>
 
         <form:label path="password"><local:message code="password"/></form:label>
         <form:password path="password" onkeyup="doAjax()"/>
-        <form:errors path="password" cssClass="error"/>
         <span style="float: right" id="strengthValue"/>
-
+        <c:if test="${not empty error}">
+            <p style="color: #cc0000">
+                    ${error}
+            </p>
+        </c:if>
     </fieldset>
     <footer>
         <input type="submit" class="btnLogin" value="<local:message code="registration"/>" tabindex="4">

@@ -16,7 +16,7 @@ import java.util.Locale;
 public class Register {
 
     @RequestMapping(value = "/check-register", method = RequestMethod.POST)
-    public String checkRegister(Locale locale, @ModelAttribute User user, HttpSession session) {
+    public String checkRegister(@ModelAttribute User user) {
         return PageName.REGISTER_PAGE;
     }
 }

@@ -1,8 +1,10 @@
 package by.htp.library.controller;
 
 import by.htp.library.entity.Book;
+import by.htp.library.entity.User;
 import by.htp.library.service.PageName;
 import by.htp.library.service.ShowCatalogService;
+import by.htp.library.service.ShowUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,16 +17,16 @@ import java.util.List;
  * Created by oxothuk1401 on 02.11.2016.
  */
 @Controller
-public class ShowCatalog {
+public class ShowUsers {
     @Autowired
-    ShowCatalogService showCatalogService;
-    @RequestMapping(value = "/show-catalog", method = RequestMethod.POST)
+    ShowUserService showUserService;
+    @RequestMapping(value = "/show-users", method = RequestMethod.POST)
     public ModelAndView showCatalog(){
         ModelAndView modelAndView = new ModelAndView();
-		List<Book> list = showCatalogService.showBooks();
-        modelAndView.addObject("viewBooks", list);
+        List<User> list = showUserService.showUsers();
+        modelAndView.addObject("viewUsers", list);
         System.out.println(list);
-        modelAndView.setViewName("/show-catalog");
+        modelAndView.setViewName("/show-users");
         return modelAndView;
     }
 }

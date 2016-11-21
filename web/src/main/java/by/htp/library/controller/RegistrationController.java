@@ -1,8 +1,10 @@
 package by.htp.library.controller;
 
+import by.htp.library.dao.exception.DAOException;
 import by.htp.library.entity.User;
 import by.htp.library.service.LoginService;
 import by.htp.library.service.PageName;
+import by.htp.library.service.RegisterService;
 import by.htp.library.utils.ShowResult;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +23,34 @@ import java.util.Map;
 
 
 @org.springframework.stereotype.Controller
-@SessionAttributes("user")
 public class RegistrationController {
 
     @Autowired
-    LoginService loginService;
-
-    String page = PageName.INDEX_PAGE;
-//
-    @ModelAttribute
-    public User createNewUser() {
-        return new User();
-    }
+    RegisterService registerService;
 
     @ShowResult
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public String checkUser(Locale locale, @Valid @ModelAttribute("user") User user, BindingResult bindingResult, ModelMap modelMap, RedirectAttributes redirectAttributes) {
-        if (!bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("locale", locale);
-            page = loginService.checkLogin(user.getLogin(), user.getPassword());
-                return "redirect:/user_page";
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    public ModelAndView checkUser(@ModelAttribute("user") User user) {
+        ModelAndView model = new ModelAndView();
+        String page = registerService.checkRegister(user.getLogin(), user.getPassword());
+        if (page.equals(PageName.REGISTER_PAGE)) {
+            model.addObject("error", "This login is busy!");
+            model.setViewName(PageName.REGISTER_PAGE);
+            return model;
         }
-        return page;
+        model.addObject("error", "You have successfully registered!");
+        model.setViewName(PageName.INDEX_PAGE);
+        return model;
     }
 
-    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
-    public String goMainPage(HttpServletRequest request) {
-
-        Map<String, ?> map = RequestContextUtils.getInputFlashMap(request);
-        String method = (map != null) ? "redirect!" : "update!";
-        System.out.println(method);
-        return page;
-    }
+//    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
+//    public String goMainPage(HttpServletRequest request) {
+//
+//        Map<String, ?> map = RequestContextUtils.getInputFlashMap(request);
+//        String method = (map != null) ? "redirect!" : "update!";
+//        System.out.println(method);
+//        return page;
+//    }
 //    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
 //    public String mainPage() {
 //

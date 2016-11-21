@@ -14,13 +14,13 @@ public interface UserOperationDAO<T> {
 
     User checkRegister(String login, String password);
 
-    User deleteUser(String user);
+    boolean deleteUser(String login);
 
-    User blockUser(String user);
+    boolean blockUser(String login);
 
-    User unLockUser(String user);
+    boolean unLockUser(String login);
 
-    List<User> takeUser(String position, String amount);
+    List<User> takeUser();
 
     int countAllUsers();
 }
