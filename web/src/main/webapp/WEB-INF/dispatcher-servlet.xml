@@ -41,7 +41,7 @@
           p:paramName="lang"/>
 
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"
-          p:defaultLocale="ru"/>
+          p:defaultLocale="en"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
           p:driverClassName="com.mysql.jdbc.Driver"
