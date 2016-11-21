@@ -53,6 +53,5 @@
         <input type="submit" class="btnReg" value="<local:message code="registration"/>">
     </form:form>
 </div>
-
 </body>
 </html>

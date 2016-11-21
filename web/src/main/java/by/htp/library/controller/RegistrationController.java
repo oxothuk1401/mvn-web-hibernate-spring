@@ -42,38 +42,4 @@ public class RegistrationController {
         model.setViewName(PageName.INDEX_PAGE);
         return model;
     }
-
-//    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
-//    public String goMainPage(HttpServletRequest request) {
-//
-//        Map<String, ?> map = RequestContextUtils.getInputFlashMap(request);
-//        String method = (map != null) ? "redirect!" : "update!";
-//        System.out.println(method);
-//        return page;
-//    }
-//    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
-//    public String mainPage() {
-//
-//        return "user_page";
-//
-//    }
-//
-//    @RequestMapping(value = "/admin_page", method = RequestMethod.GET)
-//    public String adminPage() {
-//
-//        return "admin_page";
-//
-//    }
-
-    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
-    public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", "Invalid username or password!");
-        }
-        model.setViewName("index");
-        return model;
-
-    }
-
 }

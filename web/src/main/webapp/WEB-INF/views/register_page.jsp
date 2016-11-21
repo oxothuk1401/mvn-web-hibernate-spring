@@ -38,7 +38,7 @@
     </footer>
 
 </form:form>
-<a href="j_spring_security_logout">
+<a href="/j_spring_security_logout">
     <input name="submit" type="submit" class="btnReg" value="<local:message code="tomain"/>"></a>
 </body>
 </html>

@@ -5,10 +5,10 @@
          id="WebApp_ID" version="2.5">
     <display-name>Library</display-name>
 
-    <error-page>
-        <error-code>403</error-code>
-        <location>/WEB-INF/views/error_page.jsp</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>403</error-code>-->
+        <!--<location>/WEB-INF/views/error_page.jsp</location>-->
+    <!--</error-page>-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>

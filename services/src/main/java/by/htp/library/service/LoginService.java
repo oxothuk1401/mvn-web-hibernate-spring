@@ -10,7 +10,7 @@ public class LoginService {
     @Autowired
     private UserOperationDAO userOperationDAO;
 
-
+//    Not used
     public String checkLogin(String login, String password) {
 
         User user = userOperationDAO.checkLogin(login, password);

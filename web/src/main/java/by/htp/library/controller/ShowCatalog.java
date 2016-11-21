@@ -3,6 +3,7 @@ package by.htp.library.controller;
 import by.htp.library.entity.Book;
 import by.htp.library.service.PageName;
 import by.htp.library.service.ShowCatalogService;
+import by.htp.library.utils.ShowResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ import java.util.List;
 public class ShowCatalog {
     @Autowired
     ShowCatalogService showCatalogService;
+
+    @ShowResult
     @RequestMapping(value = "/show-catalog", method = RequestMethod.POST)
     public ModelAndView showCatalog(){
         ModelAndView modelAndView = new ModelAndView();
