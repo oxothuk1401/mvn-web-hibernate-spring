@@ -24,7 +24,7 @@ public class User implements Serializable {
     @Column(name = "password")
     @Size(min = 4, max = 10, message = "{password.size.error}")
     private String password = null;
-    @Column(name = "id_role")
+    @Column(name = "role")
     private String role = null;
     @Column(name = "blacklist")
     private String blacklist = null;
