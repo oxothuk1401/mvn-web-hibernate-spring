@@ -8,7 +8,8 @@
     <title><local:message code="viewcatalog"/></title>
 </head>
 <body>
-    <table border="1">
+
+    <table border="1" align="center">
         <thead>
         <tr>
             <th><local:message code="id"/></th>

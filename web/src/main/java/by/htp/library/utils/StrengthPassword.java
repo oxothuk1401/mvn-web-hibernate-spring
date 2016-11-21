@@ -1,4 +1,4 @@
-package by.htp.library.controller;
+package by.htp.library.utils;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

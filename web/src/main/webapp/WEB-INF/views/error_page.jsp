@@ -7,8 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-<form:form method="GET" modelAttribute="user" action="/to-main">
-    <input type="submit" class="btnReg" value="<local:message code="tomain"/>">
-</form:form>
+    <a href="j_spring_security_logout">
+    <input name="submit" type="submit" class="btnReg" value="<local:message code="tomain"/>"></a>
 </body>
 </html>

@@ -12,15 +12,15 @@ public interface UserOperationDAO<T> {
 
     User checkLogin(String login, String password);
 
-    User checkRegister(String login, String password) throws DAOException;
+    User checkRegister(String login, String password);
 
-    User deleteUser(String user) throws DAOException;
+    User deleteUser(String user);
 
-    User blockUser(String user) throws DAOException;
+    User blockUser(String user);
 
-    User unLockUser(String user) throws DAOException;
+    User unLockUser(String user);
 
-    List<User> takeUser(String position, String amount) throws DAOException;
+    List<User> takeUser(String position, String amount);
 
-    int countAllUsers() throws DAOException;
+    int countAllUsers();
 }

@@ -1,5 +1,6 @@
 package by.htp.library.controller;
 
+import by.htp.library.service.PageName;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,34 +13,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginBySecurity {
 
-
-    @RequestMapping(value = "/user_page", method = RequestMethod.GET)
-    public String mainPage() {
-        return "user_page";
-
-    }
-
-    @RequestMapping(value = "/admin_page", method = RequestMethod.GET)
-    public String adminPage() {
-        return "admin_page";
-
-    }
-
-    @RequestMapping(value = "/userAndAdmin_page", method = RequestMethod.GET)
+    @RequestMapping(value = PageName.USER_ADMIN_PAGE, method = RequestMethod.GET)
     public String userAndAdminPage() {
-        return "userAndAdmin_page";
+        return PageName.USER_ADMIN_PAGE;
 
     }
 
-    @RequestMapping(value = { "/", "/index2" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/", "PageName.INDEX_PAGE" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
         ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addObject("error", "Invalid username or password!");
         }
-        model.setViewName("index2");
+        model.setViewName(PageName.INDEX_PAGE);
         return model;
-
     }
-
 }

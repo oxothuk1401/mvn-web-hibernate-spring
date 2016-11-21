@@ -1,4 +1,4 @@
-package by.htp.library.controller;
+package by.htp.library.utils;
 
 import by.htp.library.entity.User;
 
@@ -7,7 +7,7 @@ import java.lang.reflect.Field;
 /**
  * Created by oxothuk1401 on 17.11.2016.
  */
-public class Main {
+public class Reflection {
     public static void main(String[] args) {
         final Class<?> cla = User.class;
         User user = new User();

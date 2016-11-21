@@ -9,11 +9,9 @@ import java.util.List;
  */
 public interface BookOperationDAO {
 
-//    List<Book> checkSearch(String searching, String command, String sorted) throws DAOException;
-//
-//    List<T> getAll() throws DAOException;
+    List<Book> checkSearch(String searching, String command, String sorted);
 
-    List<Book> getBooks();
+        List<Book> getBooks();
 
 
 

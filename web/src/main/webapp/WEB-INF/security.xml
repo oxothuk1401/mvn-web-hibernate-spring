@@ -7,17 +7,17 @@
 
 	http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
-
-    <http use-expressions="true">
+    <http pattern="/resources/**" security="none"/>
+    <http auto-config="true" use-expressions="true">
         <intercept-url pattern="/user_page" access="hasRole('ROLE_USER')" />
         <intercept-url pattern="/admin_page" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/userAndAdmin_page" access="isAuthenticated()" />
-        <form-login login-page='/index2'
+        <form-login login-page='/index'
                     default-target-url="/userAndAdmin_page"
-                    authentication-failure-url="/index2?error=true"
+                    authentication-failure-url="/index?error=true"
                     username-parameter="user_login"
                     password-parameter="password_login" />
-        <logout logout-success-url="/index2" />
+        <logout logout-success-url="/index" />
     </http>
     <authentication-manager>
         <authentication-provider>

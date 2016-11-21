@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="local" %>
+<%@ taglib prefix="float" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,39 +13,32 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/resources/javascript/strengthPassword.js"></script>
 </head>
-
-
 <body background="1">
 
-<%--<form:form method="POST" modelAttribute="user" action="check-user"--%>
-<form:form method="POST" modelAttribute="user" action="j_spring_security_check"
+<form:form name='form_login' method="POST" action="j_spring_security_check"
            class="box login">
 
-
     <fieldset class="boxBody">
-
         <span style="float: right">
 				<a href="?lang=en"><img src="/resources/icon/en.jpg" alt="en"></a>
 				<a href="?lang=ru"><img src="/resources/icon/rus1.jpg" alt="rus"></a>
         </span>
-        <form:label path="login"><local:message code="login"/></form:label>
-        <form:input path="login"/>
-        <form:errors path="login" cssClass="error"/>
+        <local:message code="login"/>
+        <input type='text' name='user_login'>
 
-        <form:label path="password"><local:message code="password"/></form:label>
-        <form:password path="password" onkeyup="doAjax()"/>
-        <form:errors path="password" cssClass="error"/>
-        <span style="float: right" id="strengthValue"/>
-
+        <local:message code="password"/>
+        <input type='password' name='password_login'/>
+        <c:if test="${not empty error}">
+            <p style="color: #cc0000">
+                    ${error}
+            </p>
+        </c:if>
+        <footer>
+            <input name="submit" type="submit" class="btnLogin" value="<local:message code="locbutton.name.login"/>">
+        </footer>
+        </form>
     </fieldset>
-    <footer>
-        <input type="submit" class="btnLogin" value="<local:message code="locbutton.name.login"/>" tabindex="4">
-
-    </footer>
-
 </form:form>
-
-</body>
 <br>
 <br>
 <br>
@@ -57,11 +52,7 @@
     <form:form method="POST" modelAttribute="user" action="check-register">
         <input type="submit" class="btnReg" value="<local:message code="registration"/>">
     </form:form>
-    <c:if test="${not empty error}">
-        ${error}
-    </c:if>
 </div>
-<body>
 
 </body>
 </html>
