@@ -1,16 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: oxothuk1401
-  Date: 14.07.2017
-  Time: 0:44
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <head>
-    <title>$Title$</title>
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/javascript/strengthPassword.js"></script>
 </head>
 <body>
-$END$
+${showThisChat}
 </body>
 </html>

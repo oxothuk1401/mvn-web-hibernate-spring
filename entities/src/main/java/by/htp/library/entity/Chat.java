@@ -1,18 +1,8 @@
-package edu.registration.pojos;
+package by.htp.library.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-//import java.time.Clock;
 
-/**
- * Created by oxothuk1401 on 11.07.2017.
- */
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "chat")
 public class Chat {
@@ -21,8 +11,8 @@ public class Chat {
     @Column(name = "id_mssg")
     private long idMssg;
 
-    @Column(name = "id_chat", nullable = false)
-    private long idChat;
+    @Column(name = "id_student", nullable = false)
+    private long idStudent;
 
     @Column(name = "id_teacher" , nullable = false)
     private long idTeacher;
@@ -36,12 +26,36 @@ public class Chat {
     @Column(name = "username")
     private String username;
 
-    public String getUsername() {
-        return username;
+    @Column(name = "img")
+    private String img;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Chat chat = (Chat) o;
+
+        if (idMssg != chat.idMssg) return false;
+        if (idStudent != chat.idStudent) return false;
+        if (idTeacher != chat.idTeacher) return false;
+        if (message != null ? !message.equals(chat.message) : chat.message != null) return false;
+        if (date != null ? !date.equals(chat.date) : chat.date != null) return false;
+        if (username != null ? !username.equals(chat.username) : chat.username != null) return false;
+        return img != null ? img.equals(chat.img) : chat.img == null;
+
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public int hashCode() {
+        int result = (int) (idMssg ^ (idMssg >>> 32));
+        result = 31 * result + (int) (idStudent ^ (idStudent >>> 32));
+        result = 31 * result + (int) (idTeacher ^ (idTeacher >>> 32));
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (img != null ? img.hashCode() : 0);
+        return result;
     }
 
     public long getIdMssg() {
@@ -52,12 +66,12 @@ public class Chat {
         this.idMssg = idMssg;
     }
 
-    public long getIdChat() {
-        return idChat;
+    public long getIdStudent() {
+        return idStudent;
     }
 
-    public void setIdChat(long idChat) {
-        this.idChat = idChat;
+    public void setIdStudent(long idStudent) {
+        this.idStudent = idStudent;
     }
 
     public long getIdTeacher() {
@@ -84,30 +98,19 @@ public class Chat {
         this.date = date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Chat chat = (Chat) o;
-
-        if (idMssg != chat.idMssg) return false;
-        if (idChat != chat.idChat) return false;
-        if (idTeacher != chat.idTeacher) return false;
-        if (message != null ? !message.equals(chat.message) : chat.message != null) return false;
-        if (date != null ? !date.equals(chat.date) : chat.date != null) return false;
-        return username != null ? username.equals(chat.username) : chat.username == null;
-
+    public String getUsername() {
+        return username;
     }
 
-    @Override
-    public int hashCode() {
-        int result = (int) (idMssg ^ (idMssg >>> 32));
-        result = 31 * result + (int) (idChat ^ (idChat >>> 32));
-        result = 31 * result + (int) (idTeacher ^ (idTeacher >>> 32));
-        result = 31 * result + (message != null ? message.hashCode() : 0);
-        result = 31 * result + (date != null ? date.hashCode() : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        return result;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

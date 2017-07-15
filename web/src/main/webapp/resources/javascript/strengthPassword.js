@@ -4,6 +4,7 @@ function doAjax() {
                 data: ({password : $('#password').val()}),
                 success: function(data) {
                     $('#strengthValue').html(data);
+
                 }
             });
         }

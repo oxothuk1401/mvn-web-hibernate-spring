@@ -4,10 +4,10 @@ package by.htp.library.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "books")
+@Table(name = "book")
 public class Book{
     @Id
-    @Column(name = "idbooks")
+    @Column(name = "idbook")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id = 0;
     @Column(name = "access")
@@ -18,11 +18,8 @@ public class Book{
     private String title = null;
     @Column(name = "date")
     private String date = null;
-    @Column(name = "location")
-    private String location = null;
-    ;
-    @Column(name = "amount")
-    private int amount = 0;
+
+
 
 
     public String getAuthor() {
@@ -31,22 +28,6 @@ public class Book{
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int number) {
-        this.amount = amount;
     }
 
     public String getTitle() {
@@ -93,12 +74,6 @@ public class Book{
         sb.append("\n");
         sb.append("Date of publication : ");
         sb.append(this.date + " ");
-        sb.append("\n");
-        sb.append("Location : ");
-        sb.append(this.location + " ");
-        sb.append("\n");
-        sb.append("Amount : ");
-        sb.append(this.amount + " ");
         sb.append("\n");
         sb.append("Access : ");
         sb.append(this.access + " ");

@@ -10,12 +10,12 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "idusers")
+    @Column(name = "iduser")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id = 0;
     @Column(name = "login")
@@ -30,6 +30,10 @@ public class User implements Serializable {
     private String command;
 
 
+    public User(String login) {
+        super();
+        this.login = login;
+    }
     public User() {
     }
 
@@ -94,6 +98,34 @@ public class User implements Serializable {
                 "Blacklist = " + blacklist;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (summa != user.summa) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (role != null ? !role.equals(user.role) : user.role != null) return false;
+        if (blacklist != null ? !blacklist.equals(user.blacklist) : user.blacklist != null) return false;
+        return command != null ? command.equals(user.command) : user.command == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (blacklist != null ? blacklist.hashCode() : 0);
+        result = 31 * result + summa;
+        result = 31 * result + (command != null ? command.hashCode() : 0);
+        return result;
+    }
 }
 
 

@@ -1,57 +1,70 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="local" %>
-<%@ taglib prefix="float" uri="http://www.springframework.org/tags/form" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<!DOCTYPE html>
 <head>
-    <link href="<c:url value="/resources/css/home.css" />" rel="stylesheet">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><local:message code="library"/></title>
-
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="/resources/javascript/strengthPassword.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/javascript/strengthPassword.js"></script>
 </head>
-<body background="1">
+<body>
 
-<form:form name='form_login' method="POST" action="j_spring_security_check"
-           class="box login">
+<div class="container">
 
-    <fieldset class="boxBody">
-        <span style="float: right">
-				<a href="?lang=en"><img src="/resources/icon/en.jpg" alt="en"></a>
-				<a href="?lang=ru"><img src="/resources/icon/rus1.jpg" alt="rus"></a>
-        </span>
-        <local:message code="login"/>
-        <input type='text' name='user_login'>
+    <script>
+        function show()
+        {
+            $.ajax({
+                url: "index",
+                cache: false,
+                success: function(html){
+                    $("#password").html(html);
+                }
+            });
+        }
 
-        <local:message code="password"/>
-        <input type='password' name='password_login'/>
-        <c:if test="${not empty error}">
-            <p style="color: #cc0000">
-                    ${error}
-            </p>
-        </c:if>
-        <footer>
-            <input name="submit" type="submit" class="btnLogin" value="<local:message code="locbutton.name.login"/>">
-        </footer>
-        </form>
-    </fieldset>
-</form:form>
-<br>
-<br>
-<br>
-<div align="center">
-    <p>
-        <font size="20" color="#008b8b">
-            <local:message code="library"/>
-        </font>
-    </p>
-    <br>
-    <form:form method="POST" modelAttribute="user" action="check-register">
-        <input type="submit" class="btnReg" value="<local:message code="registration"/>">
-    </form:form>
+        $(document).ready(function(){
+            show();
+            setInterval('show()',1000);
+        });
+    </script>
+    <div class="row">
+        <div class="col-md-4" style="height: 250px;  border: solid #0d6db6; overflow: auto">
+            <c:forEach items="${res}" var="res">
+                <form action="show_this_chat" method="post">
+                    <input type="hidden" name="img" value="${res.img}">
+                    <div class="figure-img">
+                        <img src="/resources/image/${res.img}" width="50" height="50">
+                            <input class="btn-sm btn-warning" type="submit" value="Show chat with ${res.username}">
+                    </div>
+
+                </form>
+            </c:forEach>
+        </div>
+        <div id="mssg" class="col-md-8" style="height: 250px; border: solid #0d6db6; overflow: auto">
+            <c:forEach items="${showThisChat}" var="showThisChat">
+                <div class="bg-success">
+                <p>${showThisChat.message}</p>
+                <p>${showThisChat.date}</p>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form action="show_my_chats" method="post">
+                <input type="submit" class="btn-sm btn-primary col-md-12" value="Show my chats">
+            </form>
+        </div>
+        <div class="col-md-8">
+            <form method="POST" modelAttribute="chat" action="send_mssg">
+                <input class="col-md-8" id="password" name="password" type="text" placeholder="message"
+                       onclick="doAjax()"/>
+                <input class="col-md-2 btn-primary" type="submit" value="Send">
+                <span style="float: right" id="strengthValue"/>
+            </form>
+        </div>
+    </div>
+
 </div>
 </body>
-</html>
