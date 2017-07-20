@@ -1,6 +1,5 @@
 package by.htp.library.controller;
 import by.htp.library.entity.Chat;
-import by.htp.library.entity.User;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ import java.time.Clock;
 import java.util.Date;
 import java.util.List;
 
-
+@Transactional
 @Controller
 @SessionAttributes("showThisChat")
 public class LoginController {
@@ -25,6 +24,11 @@ public class LoginController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main() {
         return "index";
+    }
+
+    @RequestMapping(value = "/payment", method = RequestMethod.GET)
+    public String payment() {
+        return "payment";
     }
 
 
@@ -42,7 +46,9 @@ public class LoginController {
     @RequestMapping(value = "/show_my_chats", method = RequestMethod.POST)
     public ModelAndView showMyChats() {
         ModelAndView modelAndView = new ModelAndView();
-        List res = sessionFactory.getCurrentSession().createQuery("from Chat GROUP BY img").list();
+        List res = sessionFactory.getCurrentSession().createQuery("from Chat group by img").list();
+//        List res = sessionFactory.getCurrentSession().createQuery("from Chat GROUP BY img").list();
+//        List<Chat> res = sessionFactory.getCurrentSession().createSQLQuery("Select * from reg.chat GROUP BY img").list();
         modelAndView.addObject("res", res);
         modelAndView.setViewName("index");
         return modelAndView;
@@ -56,7 +62,8 @@ public class LoginController {
                 .setParameter("img", img);
         localPer = img;
         List<Chat> showThisChat = query.list();
-        List res = sessionFactory.getCurrentSession().createQuery("from Chat GROUP BY img").list();
+        List res = sessionFactory.getCurrentSession().createQuery("from Chat").list();
+//        List res = sessionFactory.getCurrentSession().createQuery("from Chat GROUP BY img").list();
         modelAndView.addObject("res", res);
         modelAndView.addObject("showThisChat", showThisChat);
         modelAndView.setViewName("index");

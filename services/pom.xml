@@ -5,8 +5,8 @@
 
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>by.htp.lev</groupId>
-        <artifactId>library</artifactId>
+        <groupId>com.letsstudy.chat</groupId>
+        <artifactId>chat</artifactId>
         <version>1.1</version>
     </parent>
     <artifactId>services</artifactId>
@@ -15,12 +15,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>by.htp.lev</groupId>
+            <groupId>com.letsstudy.chat</groupId>
             <artifactId>entities</artifactId>
             <version>1.1</version>
         </dependency>
         <dependency>
-            <groupId>by.htp.lev</groupId>
+            <groupId>com.letsstudy.chat</groupId>
             <artifactId>dao</artifactId>
             <version>1.1</version>
         </dependency>
